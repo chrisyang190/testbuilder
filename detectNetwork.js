@@ -20,6 +20,9 @@ if ((cardNumber.slice(0,2)=='38' ||  cardNumber.slice(0,2)=='39') && cardNumber.
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
 } //extended for Visa and Mastercard
+else if ((cardNumber.slice(0,4) == '4903' || cardNumber.slice(0,4) == '4905' || cardNumber.slice(0,4) == '4911' || cardNumber.slice(0,4) == '4936' || cardNumber.slice(0,4) == '6333' || cardNumber.slice(0,4) == '6759' || cardNumber.slice(0,6) == '564182' || cardNumber.slice(0,6) == '633110') && (cardNumber.length ==16 || cardNumber.length ==18 || cardNumber.length ==19)) {
+	return "Switch";
+}
 else if (cardNumber.slice(0,1)=='4' && (cardNumber.length == 13 || cardNumber.length == 16|| cardNumber.length == 19)) {
 	return "Visa";
 } else if ((cardNumber.slice(0,2)=='51' || cardNumber.slice(0,2)=='52' || cardNumber.slice(0,2)=='53' || cardNumber.slice(0,2)=='54'  || cardNumber.slice(0,2)=='55')  && cardNumber.length == 16) {
@@ -30,6 +33,8 @@ else if (cardNumber.slice(0,1)=='4' && (cardNumber.length == 13 || cardNumber.le
 	return "Discover";
 } else if ((cardNumber.slice(0,4)=='5018' || cardNumber.slice(0,4)=='5020' || cardNumber.slice(0,4)=='5038'| cardNumber.slice(0,4)=='6304') && (cardNumber.length >=12 && cardNumber.length<=19)) {
 	return "Maestro";
+} else if (((parseInt(cardNumber.slice(0,6))>= 622126 && parseInt(cardNumber.slice(0,6))<= 622925) || (parseInt(cardNumber.slice(0,3))>= 624 && parseInt(cardNumber.slice(0,3))<= 626) || (parseInt(cardNumber.slice(0,4))>= 6282 && parseInt(cardNumber.slice(0,4))<= 6288)) && (cardNumber.length >=16 && cardNumber.length <=19)) {
+	return "China UnionPay";
 }
 
 };
