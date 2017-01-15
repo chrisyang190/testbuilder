@@ -21,8 +21,13 @@ if (cardArray[0]==3 && (cardArray[1]==8 || cardArray[1]==9) && cardArray.length 
 	return "American Express";
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
-
+} //extended for Visa and Mastercard
+else if (cardArray[0]==4 && (cardArray.length == 13 || cardArray.length == 16|| cardArray.length == 19)) {
+	return "Visa";
+} else if (cardArray[0]==5 && (cardArray[1]==1 || cardArray[1]==2 || cardArray[1]==3|| cardArray[1]==4|| cardArray[1]==5) && cardArray.length ==16) {
+	return "MasterCard";
 }
+
 };
 
-//console.log(detectNetwork('373456789012345'));
+//console.log(detectNetwork('5112345678901234'));
