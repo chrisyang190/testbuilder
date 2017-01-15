@@ -263,9 +263,8 @@ describe('should support China UnionPay', function() {
   }
 })(prefixChina3)
 }
-
-
 });
+
 describe('Switch', function(){
   var should = chai.should();
   var prefixesSwitch1 = [4903, 4905, 4911, 4936, 6333, 6759];
