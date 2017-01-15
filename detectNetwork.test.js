@@ -59,6 +59,7 @@ describe('Diner\'s Club', function() {
     }
  
   });
+  
 });
 
 describe('American Express', function() {
@@ -178,6 +179,7 @@ describe('Maestro', function() {
     it('has a prefix of 5018 and a length of ' + length, function() {
       detectNetwork(str5018).should.equal('Maestro');
     });
+    
     var str5020 = '502046493567';
     var extend = length - 12;
     for (var extend = 0; extend < length-12; extend++) {
@@ -186,6 +188,7 @@ describe('Maestro', function() {
     it('has a prefix of 5020 and a length of ' + length, function() {
       detectNetwork(str5020).should.equal('Maestro');
      });
+
     var str5038 = '503846493567';
     var extend = length - 12;
     for (var extend = 0; extend < length-12; extend++) {
@@ -194,7 +197,6 @@ describe('Maestro', function() {
     it('has a prefix of 5038 and a length of ' + length, function() {
       detectNetwork(str5038).should.equal('Maestro');
     });
-
     var str6304 = '630446493567';
     var extend = length - 12;
     for (var extend = 0; extend < length-12; extend++) {
@@ -262,13 +264,72 @@ describe('should support China UnionPay', function() {
 
 
 });
-/* describe('should support Switch', function() {
-  var prefixSwitch = 4903;
+describe('should support Switch', function() {
+  /*var prefixSwitch = 4903;
   var lengthSwitch = 16;
   var extendSwitch = lengthSwitch - 16
-  var strSwitch = 
+  var strSwitch = prefixSwitch.toString() + '501693568887'
   it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
       detectNetwork(strSwitch).should.equal('Switch');
      });
-})
-*/
+
+  prefixSwitch = 4905;
+  lengthSwitch = 16;
+  extendSwitch = lengthSwitch - 16
+  strSwitch = prefixSwitch.toString() + '501693568887'
+  it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });*/
+
+   for (var lengthSwitch = 16; lengthSwitch <= 19; lengthSwitch++) {
+    if (lengthSwitch == 17) {continue;}
+    (function(lengthSwitch) {
+    var prefixSwitch = 4903;
+    var strSwitch = prefixSwitch.toString() +'501846493567';
+    var extendSwitch = lengthSwitch - 16;
+    for (var extendSwitch = 0; extendSwitch < lengthSwitch-16; extendSwitch++) {
+      strSwitch = strSwitch + '1'
+    }
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+    prefixSwitch = 4905;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+      prefixSwitch = 4911;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+      prefixSwitch = 4936;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+    prefixSwitch = 564182;
+    strSwitch = prefixSwitch.toString() +'5018463567';
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+    detectNetwork(strSwitch).should.equal('Switch');
+    });
+
+    prefixSwitch = 633110;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+    detectNetwork(strSwitch).should.equal('Switch');
+    });
+
+    strSwitch = prefixSwitch.toString() +'501846493567';
+      prefixSwitch = 6333;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+      prefixSwitch = 6759;
+    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+
+
+
+  })(lengthSwitch)
+}
+
+});
+
