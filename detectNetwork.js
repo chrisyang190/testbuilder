@@ -11,23 +11,27 @@ var detectNetwork = function(cardNumber) {
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long
-var cardArray = cardNumber.split("").map(function(s){
-	return parseInt(s);
-});
+var str = cardNumber; 
 
-if (cardArray[0]==3 && (cardArray[1]==8 || cardArray[1]==9) && cardArray.length ==14) {
+if ((cardNumber.slice(0,2)=='38' ||  cardNumber.slice(0,2)=='39') && cardNumber.length ==14) {
 	return "Diner's Club";
-} else if (cardArray[0]==3 && (cardArray[1]==4 || cardArray[1]==7) && cardArray.length ==15) {
+} else if ((cardNumber.slice(0,2)=='34' ||  cardNumber.slice(0,2)=='37') && cardNumber.length ==15) {
 	return "American Express";
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
 } //extended for Visa and Mastercard
-else if (cardArray[0]==4 && (cardArray.length == 13 || cardArray.length == 16|| cardArray.length == 19)) {
+else if (cardNumber.slice(0,1)=='4' && (cardNumber.length == 13 || cardNumber.length == 16|| cardNumber.length == 19)) {
 	return "Visa";
-} else if (cardArray[0]==5 && (cardArray[1]==1 || cardArray[1]==2 || cardArray[1]==3|| cardArray[1]==4|| cardArray[1]==5) && cardArray.length ==16) {
-	return "MasterCard";
+} else if ((cardNumber.slice(0,2)=='51' || cardNumber.slice(0,2)=='52' || cardNumber.slice(0,2)=='53' || cardNumber.slice(0,2)=='54'  || cardNumber.slice(0,2)=='55')  && cardNumber.length == 16) {
+	return "MasterCard"; 
+
+} //extended for Discover and Maestro
+	else if ((cardNumber.slice(0,4)=='6011' || cardNumber.slice(0,3)=='644'  || cardNumber.slice(0,3)=='645' || cardNumber.slice(0,3)=='646' || cardNumber.slice(0,3)=='647' || cardNumber.slice(0,3)=='648' || cardNumber.slice(0,3)=='649'|| cardNumber.slice(0,2)=='65') && (cardNumber.length ==16 || cardNumber.length ==19)) {
+	return "Discover";
+} else if ((cardNumber.slice(0,4)=='5018' || cardNumber.slice(0,4)=='5020' || cardNumber.slice(0,4)=='5038'| cardNumber.slice(0,4)=='6304') && (cardNumber.length >=12 && cardNumber.length<=19)) {
+	return "Maestro";
 }
 
 };
 
-//console.log(detectNetwork('5112345678901234'));
+//console.log(detectNetwork('6011345678901234'));
