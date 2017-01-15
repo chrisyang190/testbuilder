@@ -213,18 +213,62 @@ describe('should support China UnionPay', function() {
   (function(prefixChina) {
     for (var lengthChina = 16; lengthChina <= 19; lengthChina++) {
     (function(lengthChina) {
-    var str = prefixChina.toString() + '5016493567';
+    var strChina = prefixChina.toString() + '5016493567';
     var extendChina = lengthChina - 16;
     for (var extendChina = 0; extendChina < lengthChina-16; extendChina++) {
-      str = str + '1'
+      strChina = strChina + '1'
     }
     it('has a prefix of ' + prefixChina +' and a length of ' + lengthChina, function() {
-      detectNetwork(str).should.equal('China UnionPay');
+      detectNetwork(strChina).should.equal('China UnionPay');
      });
     })(lengthChina)
   }
 })(prefixChina)
 }
 
+  for (var prefixChina2 = 624; prefixChina2 <= 626; prefixChina2++) {
+  (function(prefixChina2) {
+    for (var lengthChina2 = 16; lengthChina2 <= 19; lengthChina2++) {
+    (function(lengthChina2) {
+    var strChina2 = prefixChina2.toString() + '5016493568887';
+    var extendChina2 = lengthChina2 - 16;
+    for (var extendChina2 = 0; extendChina2 < lengthChina2-16; extendChina2++) {
+      strChina2 = strChina2 + '1'
+    }
+    it('has a prefix of ' + prefixChina2 +' and a length of ' + lengthChina2, function() {
+      detectNetwork(strChina2).should.equal('China UnionPay');
+     });
+    })(lengthChina2)
+  }
+})(prefixChina2)
+}
+
+  for (var prefixChina3 = 6282; prefixChina3 <= 6288; prefixChina3++) {
+  (function(prefixChina3) {
+    for (var lengthChina3 = 16; lengthChina3 <= 19; lengthChina3++) {
+    (function(lengthChina3) {
+    var strChina3 = prefixChina3.toString() + '501693568887';
+    var extendChina3 = lengthChina3 - 16;
+    for (var extendChina3 = 0; extendChina3 < lengthChina3-16; extendChina3++) {
+      strChina3 = strChina3 + '1'
+    }
+    it('has a prefix of ' + prefixChina3 +' and a length of ' + lengthChina3, function() {
+      detectNetwork(strChina3).should.equal('China UnionPay');
+     });
+    })(lengthChina3)
+  }
+})(prefixChina3)
+}
+
+
 });
-describe('should support Switch')
+/* describe('should support Switch', function() {
+  var prefixSwitch = 4903;
+  var lengthSwitch = 16;
+  var extendSwitch = lengthSwitch - 16
+  var strSwitch = 
+  it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
+      detectNetwork(strSwitch).should.equal('Switch');
+     });
+})
+*/
