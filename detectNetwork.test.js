@@ -302,6 +302,7 @@ describe('Switch', function(){
         detectNetwork(prefix + '1234567891234').should.equal('Switch');
       });
     })(prefixesSwitch2[i])
+
   }
 
 });
