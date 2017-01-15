@@ -168,7 +168,7 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
-
+  var should = chai.should();
    for (var length = 12; length <= 19; length++) {
     (function(length) {
     var str5018 = '501846493567';
@@ -211,6 +211,8 @@ describe('Maestro', function() {
 });
 
 describe('should support China UnionPay', function() {
+
+  var should = chai.should();
   for (var prefixChina = 622126; prefixChina <= 622925; prefixChina++) {
   (function(prefixChina) {
     for (var lengthChina = 16; lengthChina <= 19; lengthChina++) {
@@ -264,72 +266,44 @@ describe('should support China UnionPay', function() {
 
 
 });
-describe('should support Switch', function() {
-  /*var prefixSwitch = 4903;
-  var lengthSwitch = 16;
-  var extendSwitch = lengthSwitch - 16
-  var strSwitch = prefixSwitch.toString() + '501693568887'
-  it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
+describe('Switch', function(){
+  var should = chai.should();
+  var prefixes = [4903, 4905, 4911, 4936, 6333, 6759];
+  var prefixes2 = [564182, 633110];
 
-  prefixSwitch = 4905;
-  lengthSwitch = 16;
-  extendSwitch = lengthSwitch - 16
-  strSwitch = prefixSwitch.toString() + '501693568887'
-  it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });*/
+  for (var i=0; i<prefixes.length; i++) {
+    (function(prefix) {
 
-   for (var lengthSwitch = 16; lengthSwitch <= 19; lengthSwitch++) {
-    if (lengthSwitch == 17) {continue;}
-    (function(lengthSwitch) {
-    var prefixSwitch = 4903;
-    var strSwitch = prefixSwitch.toString() +'501846493567';
-    var extendSwitch = lengthSwitch - 16;
-    for (var extendSwitch = 0; extendSwitch < lengthSwitch-16; extendSwitch++) {
-      strSwitch = strSwitch + '1'
-    }
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
-    prefixSwitch = 4905;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
-      prefixSwitch = 4911;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
-      prefixSwitch = 4936;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
-    prefixSwitch = 564182;
-    strSwitch = prefixSwitch.toString() +'5018463567';
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-    detectNetwork(strSwitch).should.equal('Switch');
-    });
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix + '123456789012').should.equal('Switch');
+      });
 
-    prefixSwitch = 633110;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-    detectNetwork(strSwitch).should.equal('Switch');
-    });
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix + '12345678901234').should.equal('Switch');
+      });
 
-    strSwitch = prefixSwitch.toString() +'501846493567';
-      prefixSwitch = 6333;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
-      prefixSwitch = 6759;
-    it('has a prefix of ' + prefixSwitch +' and a length of ' + lengthSwitch, function() {
-      detectNetwork(strSwitch).should.equal('Switch');
-     });
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix + '123456789012345').should.equal('Switch');
+      });
+    })(prefixes[i])
+  }
 
+  for (var i=0; i<prefixes2.length; i++) {
+    (function(prefix) {
 
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix + '1234567890').should.equal('Switch');
+      });
 
-  })(lengthSwitch)
-}
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix + '123456789012').should.equal('Switch');
+      });
+
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix + '1234567890123').should.equal('Switch');
+      });
+    })(prefixes2[i])
+  }
 
 });
 
